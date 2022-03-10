@@ -8,7 +8,8 @@
 		<module>model</module>
 		<module>db</module>
 		<module>dao-api</module>
-	</modules>
+        <module>rest</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
