@@ -13,8 +13,8 @@
     <div class="nav-wrapper teal lighten-1">
         <a href="#" class="brand-logo right">Books</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="books.html" th:href="@{/}">Books</a></li>
-            <li><a href="badges.html">Reader</a></li>
+            <li><a href="books.html" th:href="@{/books}">Books</a></li>
+            <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
             <li><a href="collapsible.html">Info</a></li>
         </ul>
     </div>
@@ -25,12 +25,19 @@
     <tr>
         <th>Name</th>
         <th>Author</th>
+        <th></th>
+        <th></th>
+        <th></th>
+
     </tr>
     </thead>
     <tbody>
-    <tr th:each="book: ${books}">
+    <tr th:each="book:${books}">
         <td th:text="${book.name}"/>
         <td th:text="${book.author}"/>
+        <td><a href="" th:href="@{'/'+${book.bookId} + '/show'}">SHOW</a></td>
+        <td><a href="" th:href="@{'/'+${book.bookId} + '/edit'}">EDIT</a></td>
+        <td><a href="" th:href="@{'/'+${book.bookId} + '/delete'}">DELETE</a></td>
     </tr>
     </tbody>
 </table>

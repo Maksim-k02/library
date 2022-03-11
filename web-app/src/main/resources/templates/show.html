@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Book</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper teal lighten-1">
+        <a href="#" class="brand-logo right">Books</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="books.html" th:href="@{/books}">Books</a></li>
+            <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
+            <li><a href="collapsible.html">Info</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<h3 class="center">Book</h3>
+<table class="centered">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Author</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${book.name}"/>
+        <td th:text="${book.author}"/>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

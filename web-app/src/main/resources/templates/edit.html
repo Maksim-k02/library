@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper teal lighten-1">
+        <a href="#" class="brand-logo right">Books</a>
+        <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="books.html" th:href="@{/books}">Books</a></li>
+            <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
+            <li><a href="collapsible.html">Info</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h3 class="center">Edit Book</h3>
+
+<div class="container centre">
+    <form action="#" th:action="@{'/'+${book.bookId}}" th:object="${book}" method="post">
+        <p>Author: <input type="text" th:field="*{author}"/></p>
+        <p>Name: <input type="text" th:field="*{name}"/></p>
+        <p><input type="submit" value="Edit book" class="waves-effect waves-light btn"/>
+    </form>
+</div>
+
+</body>
+</html>
