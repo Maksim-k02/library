@@ -70,6 +70,13 @@ public class BookController {
         return "redirect:/";
     }
 
+    @GetMapping(value = "/add")
+    public String addBooks(Model model){
+        model.addAttribute("addbook",new Book());
+        return "add";
+    }
+
+
 
 
 }

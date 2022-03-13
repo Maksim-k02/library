@@ -26,14 +26,22 @@
     <tr>
         <th>Name</th>
         <th>Email</th>
+        <th>Book</th>
         <th>Date</th>
+        <th></th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="reader: ${readers}">
-        <td th:text="${reader.name}"/>
-        <td th:text="${reader.email}"/>
-        <td th:text="${reader.date}"/>
+        <td th:text="${reader.name}"></td>
+        <td th:text="${reader.email}"></td>
+        <td th:each ="book: ${books}"
+            th:if="${reader.bookid == book.bookid}"
+            th:text="${book.name}"></td>
+        <td th:text="${reader.date}"></td>
+        <td><a href="" th:href="@{'/readers'+${reader.id} + '/edit'}">EDIT</a></td>
+        <td><a href="" th:href="@{'/readers'+'/'+${reader.id} + '/delete'}">DELETE</a></td>
     </tr>
     </tbody>
 </table>

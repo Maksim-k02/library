@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
 </head>
 <body>
 <nav>
@@ -19,15 +17,13 @@
     </div>
 </nav>
 
-<h3 class="center">Edit Book</h3>
-
+<h3 class="center">Add Book</h3>
 <div class="container centre">
-    <form action="#" th:action="@{'/'+${book.bookid}}" th:object="${book}" method="post">
-        <p>Author: <input type="text" th:field="*{author}"/></p>
-        <p>Name: <input type="text" th:field="*{name}"/></p>
-        <p><input type="submit" value="Edit book" class="waves-effect waves-light btn"/>
+    <form action="#" th:action="@{/}" th:object="${addbook}" method="post">
+        <p>Author: <input type="text" th:field="*{author}" class="mb-3"/></p>
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>
     </form>
 </div>
-
 </body>
 </html>
