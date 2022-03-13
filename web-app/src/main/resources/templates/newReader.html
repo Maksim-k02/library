@@ -22,10 +22,16 @@
 
 <h3 class="center">Add Book</h3>
 <div class="container centre">
-    <form action="#" th:action="@{/add}" th:object="${addbook}" method="post">
-
-        <p>Author: <input type="text" th:field="*{author}" class="mb-3"/></p>
-        <p>Name: <input type="text" th:field="*{name}" /></p>
+    <form action="#" th:action="@{/readers}" th:object="${addreader}" method="post">
+        <p>Select book: <select th:field="*{bookid}">
+            <option th:each="book:${books}"
+                    th:value="${book.bookid}"
+                    th:text="${book.name}">
+            </option>
+        </select></p>
+        <p>Name: <input type="text" th:field="*{name}" class="mb-3"/></p>
+        <p>Email: <input type="text" th:field="*{email}" /></p>
+        <p>Date: <input type="text" th:field="*{date}" /></p>
         <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>
     </form>
 
@@ -46,18 +52,18 @@
 <!--               th:field="*{id}"/>-->
 
 
-        <div class="mb-3">
-            <label class="form-label"
-                   for="field_course">Reader</label>
-            <select class="form-control"
-                    id="field_course"
-                    th:field="*{bookid}">
-                <option th:each="book : ${books}"
-                        th:value="${book.bookid}"
-                        th:text="${book.name}">
-                </option>
-            </select>
-        </div>
+<!--        <div class="mb-3">-->
+<!--            <label class="form-label"-->
+<!--                   for="field_course">Reader</label>-->
+<!--            <select class="form-control"-->
+<!--                    id="field_course"-->
+<!--                    th:field="*{bookid}">-->
+<!--                <option th:each="book : ${books}"-->
+<!--                        th:value="${book.bookid}"-->
+<!--                        th:text="${book.name}">-->
+<!--                </option>-->
+<!--            </select>-->
+<!--        </div>-->
 <!--        <div class="mb-3">-->
 <!--            <label class="form-label"-->
 <!--                   for="field_studentName">Student Name</label>-->
