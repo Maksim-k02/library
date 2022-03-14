@@ -3,129 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
 
 
 <nav>
     <div class="nav-wrapper teal lighten-1">
-        <a href="#" class="brand-logo right">Add Book</a>
+        <a href="#" class="brand-logo right">Add Reader</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="books.html" th:href="@{/books}">Books</a></li>
             <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
-            <li><a href="collapsible.html">Info</a></li>
+            <li><a href="readers.html" th:href="@{/newReader}">New Reader</a></li>
         </ul>
     </div>
 </nav>
 
-<h3 class="center">Add Book</h3>
+
+<h3 class="center">Add Reader</h3>
 <div class="container centre">
     <form action="#" th:action="@{/readers}" th:object="${addreader}" method="post">
-        <p>Select book: <select th:field="*{bookid}">
-            <option th:each="book:${books}"
-                    th:value="${book.bookid}"
-                    th:text="${book.name}">
-            </option>
-        </select></p>
+        <div class="input-field col s12">
+            <p>Select book: <select th:field="*{bookid}">
+                <option th:each="book:${books}"
+                        th:value="${book.bookid}"
+                        th:text="${book.name}">
+            </select></p>
+        </div>
         <p>Name: <input type="text" th:field="*{name}" class="mb-3"/></p>
         <p>Email: <input type="text" th:field="*{email}" /></p>
         <p>Date: <input type="text" th:field="*{date}" /></p>
-        <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>
+        <p><button class="btn waves-effect waves-light" type="submit" value="Create">Create</button>
+            <button class="btn waves-effect waves-light" type="reset" value="Reset">Reset</button>
+        </p>
+<!--        <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>-->
     </form>
 
 </div>
-<!--<div>-->
-<!--    <form id="studentForm"-->
-<!--          th:object="${reader}"-->
-<!--          action="readers.html"-->
-<!--          th:action="@{${#httpServletRequest.servletPath}}"-->
-<!--          th:method="@{post}">-->
 
-<!--        <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">-->
-<!--            <p>Please fix errors below:</p>-->
-<!--        </div>-->
-
-<!--        <input id="field_studentId"-->
-<!--               type="hidden"-->
-<!--               th:field="*{id}"/>-->
-
-
-<!--        <div class="mb-3">-->
-<!--            <label class="form-label"-->
-<!--                   for="field_course">Reader</label>-->
-<!--            <select class="form-control"-->
-<!--                    id="field_course"-->
-<!--                    th:field="*{bookid}">-->
-<!--                <option th:each="book : ${books}"-->
-<!--                        th:value="${book.bookid}"-->
-<!--                        th:text="${book.name}">-->
-<!--                </option>-->
-<!--            </select>-->
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label class="form-label"-->
-<!--                   for="field_studentName">Student Name</label>-->
-<!--            <input class="form-control"-->
-<!--                   id="field_studentName"-->
-<!--                   type="text"-->
-<!--                   value="Ivan Ivanov"-->
-<!--                   th:field="*{studentName}"/>-->
-<!--            <div th:if="${#fields.hasErrors('studentName')}"-->
-<!--                 class="text-danger"-->
-<!--                 th:errors="*{studentName}">[errors]</div>-->
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label class="form-label"-->
-<!--                   for="field_studentName">Email</label>-->
-<!--            <input class="form-control"-->
-<!--                   id="field_email"-->
-<!--                   type="text"-->
-<!--                   value="ivanow@mail.ru"-->
-<!--                   th:field="*{email}"/>-->
-<!--            <div th:if="${#fields.hasErrors('email')}"-->
-<!--                 class="text-danger"-->
-<!--                 th:errors="*{email}">[errors]</div>-->
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label class="form-label"-->
-<!--                   for="field_studentName">Course number</label>-->
-<!--            <input class="form-control"-->
-<!--                   id="field_courseNumber"-->
-<!--                   type="number"-->
-<!--                   value=""-->
-<!--                   th:field="*{courseNumber}"/>-->
-<!--            <div th:if="${#fields.hasErrors('courseNumber')}"-->
-<!--                 class="text-danger"-->
-<!--                 th:errors="*{courseNumber}">[errors]</div>-->
-
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label class="form-label"-->
-<!--                   for="field_studentDate">Date of birth</label>-->
-<!--            <input class="form-control me-1 "-->
-<!--                   id="field_studentDate"-->
-<!--                   name="startLimitDate" type="date" aria-label="Date" autofocus required-->
-<!--                   th:field="*{studentDate}"/>-->
-<!--            <div th:if="${#fields.hasErrors('studentDate')}"-->
-<!--                 class="text-danger"-->
-<!--                 th:errors="*{studentDate}">[errors]</div>-->
-
-<!--        </div>-->
-<!--        <div class="d-flex justify-content-end">-->
-<!--            <a href="students.html"-->
-<!--               th:href="@{/students}"-->
-<!--               class="btn btn-light me-1"-->
-<!--               title="Cancel">Cancel</a>-->
-<!--            <a href="students.html"-->
-<!--               th:href="@{/students}"-->
-<!--               th:onclick="@{document.forms['studentForm'].submit(); return false;}"-->
-<!--               class="btn btn-primary"-->
-<!--               title="Save student">Save</a>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</div>-->
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var sel = document.querySelectorAll('select');
+        M.FormSelect.init(sel);
+    })
+</script>
 </body>
 </html>
