@@ -6,9 +6,12 @@ import com.brest.library.BookDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 /**
@@ -24,6 +27,7 @@ public class BookController {
         this.bookDao = bookDao;
     }
 
+
     @GetMapping(value = "/books")
     public String getBooks(Model model){
         model.addAttribute("books",bookDao.findAll());
@@ -31,10 +35,20 @@ public class BookController {
         return "books";
     }
 
+    @GetMapping("/add")
+    public String addBooks(Model model){
+        model.addAttribute("book",new Book());
+        return "add";
+    }
+
     @PostMapping
-    public String createBook(Book book){
-        bookDao.save(book);
-        return "redirect:/";
+    public String createBook(@Valid Book book, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "add";
+        }else {
+            bookDao.save(book);
+            return "redirect:/";
+        }
     }
 
     @GetMapping("/{id}/show")
@@ -70,11 +84,7 @@ public class BookController {
         return "redirect:/";
     }
 
-    @GetMapping(value = "/add")
-    public String addBooks(Model model){
-        model.addAttribute("addbook",new Book());
-        return "add";
-    }
+
 
 
 

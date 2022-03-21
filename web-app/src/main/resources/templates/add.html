@@ -19,9 +19,30 @@
 
 <h3 class="center">Add Book</h3>
 <div class="container centre">
-    <form action="#" th:action="@{/}" th:object="${addbook}" method="post">
+
+<!--    <form action="#" th:action="@{/}" th:object="${book}" method="post">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <td>Author:</td>-->
+<!--                <td><input type="text" th:field="*{author}" /></td>-->
+<!--                <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Author Error</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td>Name:</td>-->
+<!--                <td><input type="text" th:field="*{name}" /></td>-->
+<!--                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <td><button type="submit">Submit</button></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </form>-->
+
+    <form action="#" th:action="@{/}" th:object="${book}" method="post">
         <p>Author: <input type="text" th:field="*{author}" class="mb-3"/></p>
+        <div style="color:red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Name Error</div>
         <p>Name: <input type="text" th:field="*{name}" /></p>
+        <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
         <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>
     </form>
 </div>
