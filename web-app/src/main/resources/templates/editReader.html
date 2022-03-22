@@ -10,7 +10,7 @@
 
 <nav>
     <div class="nav-wrapper teal lighten-1">
-        <a href="#" class="brand-logo right">Add Reader</a>
+        <a href="#" class="brand-logo right">Edit Reader</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="books.html" th:href="@{/books}">Books</a></li>
             <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
@@ -20,9 +20,9 @@
 </nav>
 
 
-<h3 class="center">Add Reader</h3>
+<h3 class="center">Edit Reader</h3>
 <div class="container centre">
-    <form action="#" th:action="@{/readers}" th:object="${addreader}" method="post">
+    <form action="#" th:action="@{'/readers'+'/'+${reader.id}}" th:object="${reader}" method="post">
         <div class="input-field col s12">
             <p>Select book: <select th:field="*{bookid}">
                 <option th:each="book:${books}"
@@ -36,7 +36,7 @@
         <p><button class="btn waves-effect waves-light" type="submit" value="Create">Create</button>
             <button class="btn waves-effect waves-light" type="reset" value="Reset">Reset</button>
         </p>
-<!--        <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>-->
+        <!--        <p><input type="submit" value="Create" class="waves-effect waves-light btn"/> <input type="reset" value="Reset" class="waves-effect waves-light btn" /></p>-->
     </form>
 
 </div>

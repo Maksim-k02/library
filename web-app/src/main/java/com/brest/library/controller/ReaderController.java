@@ -49,12 +49,32 @@ public class ReaderController {
         return "redirect:/readers";
     }
 
-    @GetMapping(value = "/newReader")
+    @GetMapping(value = "/readers/newReader")
     public String addReader(Model model){
         model.addAttribute("books",bookDao.findAll());
         model.addAttribute("addreader",new Reader());
         return "newReader";
     }
+
+    @GetMapping("/readers/{id}/editReader")
+    public String editFormById(@PathVariable("id") Long id, Model model){
+        if (readerDao.findById(id).isPresent()){
+            model.addAttribute("books",bookDao.findAll());
+            model.addAttribute("reader",readerDao.findById(id).get());
+            return "editReader";
+        }
+        model.addAttribute("reader", new Reader());
+        return "editReader";
+    }
+
+    @PostMapping("/readers/{id}")
+    public String updateReader(@PathVariable("id") Long id, Reader reader){
+        System.out.println(reader);
+        readerDao.save(reader);
+        return "redirect:/readers";
+    }
+
+
 
 
 }

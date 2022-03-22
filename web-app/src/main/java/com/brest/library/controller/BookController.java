@@ -35,7 +35,7 @@ public class BookController {
         return "books";
     }
 
-    @GetMapping("/add")
+    @GetMapping("/books/add")
     public String addBooks(Model model){
         model.addAttribute("book",new Book());
         return "add";

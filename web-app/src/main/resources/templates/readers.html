@@ -15,13 +15,13 @@
         <ul id="nav-mobile" class="left hide-on-med-and-down">
             <li><a href="books.html" th:href="@{/books}">Books</a></li>
             <li><a href="readers.html" th:href="@{/readers}">Readers</a></li>
-            <li><a href="readers.html" th:href="@{/newReader}">New Reader</a></li>
+            <li><a href="readers.html" th:href="@{/readers/newReader}">New Reader</a></li>
         </ul>
     </div>
 </nav>
 <div>
     <p></p>
-    <a href="add.html" th:href="@{/newReader}" class="waves-effect waves-light btn-large right "><i class="material-icons left">add</i>Add</a>
+    <a href="add.html" th:href="@{/readers/newReader}" class="waves-effect waves-light btn-large right "><i class="material-icons left">add</i>Add</a>
 </div>
 
 
@@ -44,7 +44,7 @@
             th:if="${reader.bookid == book.bookid}"
             th:text="${book.name}"></td>
         <td th:text="${reader.date}"></td>
-        <td><a href="" th:href="@{'/readers'+${reader.id} + '/edit'}">EDIT</a></td>
+        <td><a href="" th:href="@{'/readers'+'/'+${reader.id} + '/editReader'}">EDIT</a></td>
         <td><a href="" th:href="@{'/readers'+'/'+${reader.id} + '/delete'}">DELETE</a></td>
     </tr>
     </tbody>
