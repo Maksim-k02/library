@@ -6,6 +6,9 @@ import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +20,15 @@ public class Reader {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull(message = "Name should not be empty")
+    @Size(min=2, max=30, message = "Name should be form 2 to 30 symbol")
     private String name;
+
+    @NotNull(message = "Email should not be empty")
+    @Email(message = "Incorrect format email")
     private String email;
+
     private Long bookid;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")

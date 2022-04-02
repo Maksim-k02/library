@@ -22,7 +22,7 @@
 
 <h3 class="center">Add Reader</h3>
 <div class="container centre">
-    <form action="#" th:action="@{/readers}" th:object="${addreader}" method="post">
+    <form action="#" th:action="@{/readers/newReader}" th:object="${reader}" method="post">
         <div class="input-field col s12">
             <p>Select book: <select th:field="*{bookid}">
                 <option th:each="book:${books}"
@@ -30,7 +30,9 @@
                         th:text="${book.name}">
             </select></p>
         </div>
+
         <p>Name: <input type="text" th:field="*{name}" class="mb-3"/></p>
+        <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
         <p>Email: <input type="text" th:field="*{email}" /></p>
         <p>Date: <input type="date" th:field="*{date}"/></p>
         <p><button class="btn waves-effect waves-light" type="submit" value="Create">Create</button>

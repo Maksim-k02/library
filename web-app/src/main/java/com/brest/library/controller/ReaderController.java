@@ -9,9 +9,12 @@ import com.brest.library.ReaderDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 
 /**
@@ -37,10 +40,16 @@ public class ReaderController {
     }
 
 
-    @PostMapping(value = "/readers")
-    public String createReader(Reader reader){
-        readerDao.save(reader);
-        return "redirect:/readers";
+    @PostMapping(value = "/readers/newReader")
+    public String createReader(Model model, @Valid Reader reader, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            model.addAttribute("books",bookDao.findAll());
+            return "newReader";
+
+        } else {
+            readerDao.save(reader);
+            return "redirect:/readers";
+        }
     }
 
     @GetMapping("/readers/{id}/delete")
@@ -52,7 +61,7 @@ public class ReaderController {
     @GetMapping(value = "/readers/newReader")
     public String addReader(Model model){
         model.addAttribute("books",bookDao.findAll());
-        model.addAttribute("addreader",new Reader());
+        model.addAttribute("reader",new Reader());
         return "newReader";
     }
 
