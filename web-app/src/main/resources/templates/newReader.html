@@ -34,7 +34,9 @@
         <p>Name: <input type="text" th:field="*{name}" class="mb-3"/></p>
         <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div>
         <p>Email: <input type="text" th:field="*{email}" /></p>
+        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</div>
         <p>Date: <input type="date" th:field="*{date}"/></p>
+        <div style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</div>
         <p><button class="btn waves-effect waves-light" type="submit" value="Create">Create</button>
             <button class="btn waves-effect waves-light" type="reset" value="Reset">Reset</button>
         </p>
